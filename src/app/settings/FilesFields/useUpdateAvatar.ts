@@ -41,7 +41,7 @@ export const useUpload: TypeUpload = () => {
 					'Validation failed (expected size is less than 1048576)'
 				) {
 					setTimeout(() => {
-						setError('Размер файла не должен превышат 1 MB')
+						setError('Размер файла не должен превышать 1 MB')
 						setIsLoading(false)
 					}, 1000)
 				} else {

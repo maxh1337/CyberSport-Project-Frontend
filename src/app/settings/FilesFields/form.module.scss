@@ -5,18 +5,14 @@
 		@apply w-full h-full flex justify-center;
 	}
 	> label {
-		@apply relative;
+		@apply relative flex justify-center items-center flex-col mt-12;
 	}
 }
 
 .input {
-	@apply absolute top-[30px] -right-[18%] relative;
-	@apply file:bg-secondary file:text-white hover:file:bg-white hover:file:text-secondary  file:transition file:duration-300 file:ease-in-out;
-	@apply file:rounded-lg;
-	@apply file:py-2 file:mb-2 file:border-none ml-3;
-	@apply hover:cursor-pointer file:cursor-pointer;
+	@apply hidden h-0 w-0;
 }
 
 .error {
-	@apply text-sm w-full text-secondary;
+	@apply text-sm w-full text-error mt-5;
 }

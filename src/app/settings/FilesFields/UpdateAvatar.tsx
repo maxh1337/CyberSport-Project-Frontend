@@ -1,7 +1,8 @@
 import { useProfile } from '@/hooks/useProfile'
+import Button from '@/ui/button/Button'
 import { Skeleton } from '@mui/material'
 import { default as Image } from 'next/image'
-import { CSSProperties, FC } from 'react'
+import { CSSProperties, FC, useRef } from 'react'
 import styles from './form.module.scss'
 import { useUpload } from './useUpdateAvatar'
 
@@ -13,6 +14,7 @@ export interface IUploadField {
 const UpdateAvatar: FC<IUploadField> = ({ isNoImage = false, style }) => {
 	const { data } = useProfile()
 	const { isLoading, uploadFile, error } = useUpload()
+	const inputRef = useRef<HTMLInputElement>(null)
 
 	return (
 		<div style={style}>
@@ -40,12 +42,20 @@ const UpdateAvatar: FC<IUploadField> = ({ isNoImage = false, style }) => {
 					</div>
 				)}
 				<label>
+					<Button
+						variant='updateAvatar'
+						onClick={() => inputRef.current?.click()}
+						className=''
+					>
+						Загрузить
+					</Button>
 					<input
 						title=' '
 						type='file'
 						accept='image/*'
 						onChange={uploadFile}
 						className={styles.input}
+						ref={inputRef}
 					/>
 					{/* @ts-ignore */}
 					<div className={styles.error}>{error}</div>

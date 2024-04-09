@@ -13,6 +13,14 @@
 		@apply px-12 py-4 text-xl;
 	}
 
+	&.btn-updateAvatar {
+		@apply px-7 bg-white text-secondary border border-secondary rounded-lg transition duration-500 ease-in-out;
+
+		&:hover {
+			@apply text-white bg-secondary;
+		}
+	}
+
 	&.btn-auth-outlined {
 		@apply px-10 py-2 text-secondary border-secondary border rounded-lg;
 
