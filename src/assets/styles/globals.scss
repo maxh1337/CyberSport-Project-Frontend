@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	/* color: rgb(var(--foreground-rgb)); */
+	/* background: linear-gradient(90deg, #100e19 0%, #1c1326 46.87%, #100e19 100%); */
+	@apply overflow-x-hidden text-base;
+}
+
+.disabled {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	opacity: 0.2 !important;
+}
+
+/*  Slider animation */
+
+.slide-animation-enter {
+	opacity: 0;
+	transform: scale(0.9);
+}
+
+.slide-animation-enter-active {
+	opacity: 1;
+	transform: translateX(0);
+	transition:
+		opacity 300ms,
+		transform 300ms;
+}
+
+.slide-animation-exit {
+	opacity: 1;
+}
+
+.slide-animation-exit-active {
+	opacity: 0;
+	transform: scale(0.9);
+	transition:
+		opacity 300ms,
+		transform 300ms;
+}

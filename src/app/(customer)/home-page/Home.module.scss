@@ -1,0 +1,13 @@
+.main {
+	@apply grid gap-3 p-2 pt-0 w-11/12 h-full justify-center animate-fade-in;
+	grid-template-columns: 98%;
+	grid-template-rows: 24% 50% 24%;
+
+	> h1 {
+		@apply w-10 h-10;
+	}
+
+	> div {
+		@apply h-full bg-accent1 rounded-3xl w-full;
+	}
+}

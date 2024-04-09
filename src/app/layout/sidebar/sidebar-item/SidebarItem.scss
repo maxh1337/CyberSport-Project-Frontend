@@ -1,0 +1,15 @@
+.sidebarItem {
+	@apply flex items-center justify-start mb-6 animate-fade-in py-4 w-9/12 pl-4;
+	> a {
+		@apply text-base ml-2 transition-colors duration-200 text-accent2 block font-medium font-sans;
+	}
+
+	> svg,
+	img {
+		@apply hidden;
+	}
+
+	&.main-active {
+		@apply py-4 pl-4 bg-accent1 rounded-xl;
+	}
+}

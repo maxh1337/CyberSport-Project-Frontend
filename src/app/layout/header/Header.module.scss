@@ -1,0 +1,38 @@
+.main {
+	@apply bg-white w-full grid w-full h-20 flex items-center animate-fade-in;
+	@apply sm:bg-white sm:grid;
+	@apply md:bg-white;
+	@apply lg:bg-white;
+	@apply xl:bg-white;
+
+	> .logo {
+		@apply border-accent border-r-2 h-full flex items-center justify-center w-full;
+
+		/* > img {
+			@apply;
+		} */
+
+		> p {
+			@apply text-secondary font-semibold;
+			@apply md:text-secondary md:font-semibold md:text-lg;
+			@apply lg:text-secondary lg:font-semibold lg:text-2xl;
+			@apply xl:text-secondary xl:font-semibold xl:text-3xl;
+		}
+	}
+
+	> .interfaceButtons {
+		@apply flex items-center justify-end w-11/12;
+
+		> div {
+			@apply flex gap-3 mr-1.5;
+
+			> a {
+				@apply bg-white rounded-xl w-9 h-9 flex items-center justify-center;
+
+				> svg {
+					@apply animate-fade-in;
+				}
+			}
+		}
+	}
+}

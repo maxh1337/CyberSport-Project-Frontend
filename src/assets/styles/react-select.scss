@@ -1,0 +1,108 @@
+/* React Select */
+.custom-select {
+	&__control {
+		@apply pl-3 py-0.5;
+		background-color: transparent !important;
+		border: none !important;
+		border-radius: 8px !important;
+		border: 1px solid #b2b4c9 !important;
+		box-shadow: none !important;
+
+		&--menu-is-open {
+			border-color: #f0eef9 !important;
+		}
+	}
+
+	&__value-container {
+		color: #f0eef9 !important;
+		font-size: 0.875rem /* 14px */ !important;
+		line-height: 1.25rem /* 20px */ !important;
+		padding: 0 !important;
+		cursor: text !important;
+	}
+
+	&__input-container {
+		color: #c9b2b2 !important;
+	}
+
+	&__indicator-separator {
+		display: none !important;
+	}
+
+	&__indicators {
+		cursor: pointer !important;
+	}
+
+	&__indicator {
+		color: #b2b4c9 !important;
+
+		&:hover {
+			color: #f0eef9 !important;
+		}
+	}
+
+	&__multi-value {
+		background-color: rgba(#999aa5, 0.6) !important;
+		border-radius: 0.5rem !important;
+	}
+
+	&__multi-value__label {
+		color: rgba(white, 0.7) !important;
+	}
+
+	&__multi-value__remove {
+		color: rgba(white, 0.8) !important;
+
+		&:hover {
+			background-color: transparent !important;
+			color: rgba(white, 1) !important;
+		}
+	}
+
+	&__menu {
+		font-size: 0.875rem /* 14px */ !important;
+		line-height: 1.25rem /* 20px */ !important;
+		background-color: #ffffff !important;
+		color: rgba(rgb(0, 0, 0), 1) !important;
+	}
+
+	&__option {
+		background-color: #ffffff !important;
+		color: black !important;
+		cursor: pointer !important;
+
+		&--is-focused {
+			background-color: #f0eef9 !important;
+		}
+	}
+
+	&-container {
+		> div {
+			outline: none !important;
+			box-shadow: none !important;
+		}
+
+		.form-control__control {
+			@apply transition-all;
+			border-color: #ced4da !important;
+			box-shadow: none !important;
+		}
+
+		&:hover,
+		&--menu-is-open {
+			border-color: #ced4da !important;
+		}
+
+		.form-control__indicators {
+			@apply cursor-pointer;
+		}
+	}
+
+	&__menu {
+		@apply animate-fade-in-easy;
+	}
+}
+
+.admin-form {
+	@apply w-1/2 mt-12;
+}

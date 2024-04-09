@@ -1,0 +1,28 @@
+.slider {
+	@apply relative mx-auto;
+	/* max-width: 1200px; */
+
+	.slide {
+		@apply relative h-full w-full rounded-3xl overflow-hidden shadow-xl flex items-end object-fill items-center;
+
+		.image {
+			@apply pointer-events-none object-cover object-center overflow-hidden;
+		}
+
+		.content {
+			@apply relative z-20 ml-10;
+
+			.heading {
+				@apply text-white uppercase text-5xl font-semibold mb-2 shadow-sm;
+			}
+
+			.subHeading {
+				@apply text-accent2 font-medium uppercase mb-2 shadow-sm;
+			}
+
+			.button {
+				@apply p-2 px-10;
+			}
+		}
+	}
+}

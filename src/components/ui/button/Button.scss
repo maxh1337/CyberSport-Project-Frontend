@@ -1,0 +1,31 @@
+.btn {
+	@apply rounded-xl px-20 py-2.5 font-medium shadow transition duration-300 ease-in-out;
+
+	&:not(&:disabled) {
+		@apply hover:shadow-lg;
+	}
+
+	&.btn-light-purple {
+		@apply bg-secondary text-white;
+	}
+
+	&.btn-large {
+		@apply px-12 py-4 text-xl;
+	}
+
+	&.btn-auth-outlined {
+		@apply px-10 py-2 text-secondary border-secondary border rounded-lg;
+
+		&:hover {
+			@apply text-white bg-secondary;
+		}
+	}
+
+	&.btn-auth-contained {
+		@apply px-10 py-2 bg-secondary text-white border border-secondary rounded-lg;
+
+		&:hover {
+			@apply px-10 py-2 bg-white text-secondary border border-secondary rounded-lg;
+		}
+	}
+}
