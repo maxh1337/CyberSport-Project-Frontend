@@ -6,7 +6,7 @@ import { useUsersZustand } from '@/store/user/user-store'
 export function useProfile() {
 	const { user } = useUsersZustand()
 
-	const { data, refetch } = useQuery({
+	const { data, refetch, isLoading } = useQuery({
 		queryKey: ['get profile'],
 		queryFn: () => UserService.getProfile(),
 		select: ({ data }) => data,
@@ -15,6 +15,7 @@ export function useProfile() {
 
 	return {
 		data,
-		refetch
+		refetch,
+		isLoading
 	}
 }

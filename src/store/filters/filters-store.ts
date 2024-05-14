@@ -1,15 +1,15 @@
-import { TypePlantDataFilters } from '@/services/plant/plant.types'
+import { TypeTournamentDataFilters } from '@/services/tournament/tournament.types'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 export interface IFiltersActionsPayload {
-	key: keyof TypePlantDataFilters
+	key: keyof TypeTournamentDataFilters
 	value: string
 }
 
 export interface IFiltersState {
 	isFilterUpdated: boolean
-	queryParams: TypePlantDataFilters
+	queryParams: TypeTournamentDataFilters
 	updateQueryParam: (payload: IFiltersActionsPayload) => void
 	resetFilterUpdate: () => void
 }
@@ -18,7 +18,8 @@ export const useFiltersZustand = create<IFiltersState>()(
 	devtools(set => ({
 		isFilterUpdated: false,
 		queryParams: {
-			searchTerm: ''
+			searchTerm: '',
+			status: 'Active'
 		},
 		updateQueryParam: payload => {
 			const { key, value } = payload

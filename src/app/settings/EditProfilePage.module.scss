@@ -1,7 +1,7 @@
 .main {
 	@apply w-11/12 h-full animate-fade-in grid gap-3;
 	grid-template-columns: 80% 20%;
-	grid-template-rows: 7% 25% 30% 18% 10%;
+	grid-template-rows: 6% 24% 33% 17% 10%;
 
 	> div {
 		@apply h-full rounded-3xl w-full;
@@ -24,12 +24,12 @@
 		grid-area: 3 / 1 / 4 / 2;
 	}
 	.div4 {
-		@apply bg-accent pt-3 pl-3;
-		grid-area: 4 / 1 / 5 / 2;
+		@apply pt-3 pl-3;
+		grid-area: 4 / 1 / 5 / 3;
 	}
 	.div5 {
 		@apply pt-3;
-		grid-area: 2 / 2 / 5 / 3;
+		grid-area: 2 / 2 / 4 / 3;
 	}
 	.div6 {
 		@apply flex items-center justify-end;

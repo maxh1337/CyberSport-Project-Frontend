@@ -1,0 +1,30 @@
+.uploadField {
+	@apply flex flex-col;
+
+	> p {
+		@apply text-center;
+	}
+
+	> div {
+		@apply w-full h-full flex justify-center;
+
+		> img {
+			@apply mt-3;
+		}
+	}
+	> label {
+		@apply relative flex justify-center items-center flex-col mt-4 pointer-events-none;
+
+		> button {
+			@apply pointer-events-auto;
+		}
+	}
+}
+
+.input {
+	@apply hidden h-0 w-0 pointer-events-none;
+}
+
+.error {
+	@apply text-sm w-full text-error mt-5 text-center pointer-events-none;
+}

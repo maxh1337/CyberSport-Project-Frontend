@@ -1,0 +1,15 @@
+import instance from '@/api/api.interceptor'
+import { IGetAllTournaments } from '@/types/tournament.types'
+import { TypeTournamentDataFilters } from './tournament.types'
+
+const TOURNAMENT = 'tournament'
+
+export const TournamentService = {
+	async getManyWithTerm(queryData = {} as TypeTournamentDataFilters) {
+		return instance<IGetAllTournaments[]>({
+			url: `${TOURNAMENT}/get-tournaments/`,
+			method: 'GET',
+			params: queryData
+		})
+	}
+}

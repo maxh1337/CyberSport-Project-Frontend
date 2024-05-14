@@ -1,0 +1,13 @@
+.item {
+	@apply py-2 bg-accent1 w-full rounded-xl items-center mb-5;
+	display: grid;
+	grid-template-columns: 8% 38% 13% 13% 16% 10%;
+
+	> img {
+		@apply ml-3;
+	}
+
+	> p {
+		@apply font-semibold;
+	}
+}

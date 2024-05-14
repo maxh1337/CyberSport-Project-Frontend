@@ -63,10 +63,14 @@ export const useUsersZustand = create<UserStateZustand>()(
 					data: { refreshToken }
 				})
 
-				if (response.data.accessToken) saveToStorage(response.data)
+				if (response.data.accessToken) {
+					saveToStorage(response.data)
+				}
 
 				set({ user: response.data.user }, false, 'set user after getNewTokens')
 			} catch (error: any) {
+				set({ user: undefined }, false, 'set')
+				removeFromStorage()
 				console.log(error?.response?.data.message)
 			}
 		},

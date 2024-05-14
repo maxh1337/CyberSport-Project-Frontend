@@ -1,0 +1,30 @@
+.mainGrid {
+	@apply w-[75%];
+	/* @apply grid;
+	grid-template-columns: 75%;
+	grid-template-rows: 10% 12% 25% 10% 35%; */
+}
+
+.explorer {
+	@apply flex flex-col;
+
+	> div {
+		@apply w-0 h-0 whitespace-nowrap opacity-0 overflow-hidden;
+		transition:
+			width 600ms ease-in-out,
+			opacity 600ms ease-in-out;
+	}
+
+	> section {
+		@apply w-full;
+		transition: width 600ms ease-in-out;
+	}
+
+	&.filterOpened {
+		@apply gap-5;
+
+		> div {
+			@apply w-2/6 h-full opacity-100;
+		}
+	}
+}

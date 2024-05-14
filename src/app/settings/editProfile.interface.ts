@@ -11,5 +11,9 @@ export interface IEditForm1Fields {
 
 export const SelectOptions = [
 	{ value: 'Player', label: 'Игрок' },
-	{ value: 'Coach', label: 'Тренер' }
+	{ value: 'Coach', label: 'Тренер' },
+	{ value: 'Referee', label: 'Судья' },
+	{ value: 'Manager', label: 'Менеджер' },
+	{ value: 'Organizer', label: 'Организатор' },
+	{ value: 'Executor', label: 'Исполнитель' }
 ]

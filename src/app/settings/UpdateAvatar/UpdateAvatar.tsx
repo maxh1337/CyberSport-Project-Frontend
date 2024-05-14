@@ -13,12 +13,14 @@ export interface IUploadField {
 
 const UpdateAvatar: FC<IUploadField> = ({ isNoImage = false, style }) => {
 	const { data } = useProfile()
+
 	const { isLoading, uploadFile, error } = useUpload()
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	return (
 		<div style={style}>
 			<div className={styles.uploadField}>
+				<p>Аватар</p>
 				{!isNoImage && (
 					<div>
 						{isLoading ? (
@@ -47,12 +49,12 @@ const UpdateAvatar: FC<IUploadField> = ({ isNoImage = false, style }) => {
 						onClick={() => inputRef.current?.click()}
 						className=''
 					>
-						Загрузить
+						Изменить
 					</Button>
 					<input
 						title=' '
 						type='file'
-						accept='image/*'
+						accept='.svg, .jpg, .jpeg, .png'
 						onChange={uploadFile}
 						className={styles.input}
 						ref={inputRef}

@@ -2,10 +2,10 @@
 	@apply flex items-center;
 
 	> span:first-child {
-		@apply h-5 w-5 rounded border border-solid border-gray2 bg-transparent transition-colors duration-300 ease-in-out;
+		@apply h-5 w-5 rounded border border-solid border-accent2 bg-transparent transition-colors duration-300 ease-in-out;
 
 		&.active {
-			@apply border-gray2 bg-green;
+			@apply border-accent2 bg-secondary;
 		}
 	}
 

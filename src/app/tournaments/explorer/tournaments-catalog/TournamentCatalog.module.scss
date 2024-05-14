@@ -1,0 +1,13 @@
+.catalog {
+	@apply flex flex-col;
+}
+
+.grid {
+	@apply py-2 w-full border-b border-accent mb-6;
+	display: grid;
+	grid-template-columns: 8% 36% 14% 12% 18% 12%;
+
+	> p {
+		@apply py-2;
+	}
+}

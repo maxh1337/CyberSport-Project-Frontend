@@ -1,16 +1,24 @@
 export interface IUser {
 	id: number
 	email: string
-	isAdmin: boolean
 	nickname: string
-	avatar: Avatar
+	avatar: IUserFile
+	isAdmin: boolean
+	description: string
+	status: 'Player' | 'Referee' | 'Coach' | 'Manager' | 'Organizer' | 'Executor'
+	role: 'Admin' | 'Moderator' | 'User'
+	teamRole: 'Owner' | 'Captain' | 'Player' | 'Substitute'
+	documents: IUserFile[]
 }
 
-interface Avatar {
+export interface IUserFile {
 	id: number
-
+	createdAt: string
 	documentName: string
 	originalName: string
+	size: number
+	mimeType: string
+	userId: number
 }
 
 export interface IUserState {

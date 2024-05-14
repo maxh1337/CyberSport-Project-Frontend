@@ -1,0 +1,60 @@
+.main {
+	@apply grid h-full;
+	grid-template-columns: 60% 30%;
+	grid-template-rows: 20% 75%;
+
+	> div {
+		@apply h-full flex flex-row w-full;
+	}
+
+	> div:nth-of-type(1) {
+		@apply row-start-2 col-start-1 row-end-3 col-end-2 mr-2;
+	}
+
+	> div:nth-of-type(2) {
+		@apply row-start-2 col-start-2 row-end-2 col-end-2;
+
+		> label {
+			@apply relative flex justify-center items-center flex-col mt-4 pointer-events-none;
+
+			> button {
+				@apply pointer-events-auto;
+			}
+		}
+	}
+
+	> p {
+		@apply row-start-1 col-start-1 row-end-2 col-end-3;
+	}
+}
+
+.fileItem {
+	@apply h-full bg-accent rounded-xl w-[15%] mr-3 mt-2;
+	> div {
+		@apply h-full flex items-center flex-col justify-center;
+
+		> h4 {
+			@apply text-sm text-ellipsis overflow-hidden text-center w-3/4 mt-2 h-5;
+
+			&:hover {
+				@apply w-full;
+			}
+		}
+	}
+}
+
+.TrashButton {
+	@apply absolute relative -top-[92%] left-[60%] w-5 h-5;
+}
+
+.DownloadButton {
+	@apply absolute relative  -top-[90%] -right-[5%] w-5 h-5;
+}
+
+.error {
+	@apply text-sm w-full text-error mt-5 text-center pointer-events-none;
+}
+
+.input {
+	@apply hidden h-0 w-0 pointer-events-none;
+}

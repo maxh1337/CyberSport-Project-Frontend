@@ -3,28 +3,40 @@
 import { useProfile } from '@/hooks/useProfile'
 import Button from '@/ui/button/Button'
 import Field from '@/ui/input/Field'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { validEmail } from '../auth/valid-email'
 import styles from './EditProfilePage.module.scss'
-import UpdateAvatar from './FilesFields/UpdateAvatar'
+import UpdateAvatar from './UpdateAvatar/UpdateAvatar'
+import UpdateUserFiles from './UpdateUserFiles/UpdateUserFiles'
 import { IEditForm1Fields, SelectOptions } from './editProfile.interface'
 
 const EditProfilePage: FC = () => {
-	const { data } = useProfile()
+	const { data, isLoading: isProfileLoading, refetch } = useProfile()
 	const [count, setCount] = useState(0)
+	const [playerType, setPlayerType] = useState<string | undefined>('')
 
 	const {
 		register: form1,
 		getValues: getValuesForm1,
+		setValue,
 		handleSubmit,
-		formState: { errors },
 		reset,
-		control
+		formState: { errors }
 	} = useForm<IEditForm1Fields>({
 		mode: 'onChange'
 	})
+
+	useEffect(() => {
+		if (data?.description) {
+			let count = data.description.substring(0, 100).length
+			setCount(count)
+			setValue('description', data.description)
+			setValue('nickname', data.nickname)
+			setValue('email', data.email)
+		}
+	}, [isProfileLoading])
 
 	return (
 		<section className={styles.main}>
@@ -50,6 +62,7 @@ const EditProfilePage: FC = () => {
 						<div>
 							<span className=' mb-1 ml-1'>Тип аккаунта</span>
 							<Select
+								onChange={value => setPlayerType(value?.value)}
 								defaultValue={SelectOptions[0]}
 								classNamePrefix='custom-select'
 								options={SelectOptions}
@@ -60,6 +73,7 @@ const EditProfilePage: FC = () => {
 					</div>
 					<div className=' w-full'>
 						<Field
+							autoComplete='email'
 							type='Email'
 							placeholder='Email'
 							className=' w-9/12'
@@ -80,7 +94,15 @@ const EditProfilePage: FC = () => {
 				<form className='flex flex-col'>
 					<div className='flex gap-4 w-11/12'>
 						<Field
-							{...form1('oldPassword', {})}
+							{...form1('oldPassword', {
+								required: 'Старый пароль является обязательным',
+								minLength: {
+									value: 8,
+									message: 'Значение должно содержать минимум 8 символов.'
+								}
+							})}
+							type='password'
+							error={errors?.oldPassword?.message}
 							placeholder='Старый пароль'
 							className='w-10/12 !rounded-none'
 						/>
@@ -122,6 +144,7 @@ const EditProfilePage: FC = () => {
 							})}
 							cols={10}
 							rows={2}
+							defaultValue={data?.description}
 							onChange={e => setCount(e.target.value.substring(0, 100).length)}
 							wrap='soft'
 							maxLength={100}
@@ -133,13 +156,29 @@ const EditProfilePage: FC = () => {
 					</div>
 				</form>
 			</div>
-			<div className={styles.div4}>Загрузка общих файлов</div>
+			<div className={styles.div4}>
+				<UpdateUserFiles />
+			</div>
 			<div className={styles.div5}>
 				<UpdateAvatar />
 			</div>
 			<div className={styles.div6}>
 				<div>
-					<Button variant='auth-outlined' className='mr-3'>
+					<Button
+						variant='auth-outlined'
+						className='mr-3'
+						onClick={() => {
+							reset({
+								oldPassword: '',
+								newPassword: '',
+								newPasswordRepeat: '',
+								nickname: data?.nickname,
+								email: data?.email,
+								description: data?.description
+							})
+							data && setCount(data.description.substring(0, 100).length)
+						}}
+					>
 						Отменить
 					</Button>
 					<Button variant='auth-contained'>Сохранить</Button>
@@ -149,3 +188,6 @@ const EditProfilePage: FC = () => {
 	)
 }
 export default EditProfilePage
+
+// Refresh Xig
+// Access 5BS
