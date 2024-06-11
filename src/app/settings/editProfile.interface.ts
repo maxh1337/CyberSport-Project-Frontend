@@ -9,6 +9,10 @@ export interface IEditForm1Fields {
 	avatar: string
 }
 
+export const getIndexByValue = (value: string | undefined): number => {
+	return SelectOptions.findIndex(option => option.value === value)
+}
+
 export const SelectOptions = [
 	{ value: 'Player', label: 'Игрок' },
 	{ value: 'Coach', label: 'Тренер' },

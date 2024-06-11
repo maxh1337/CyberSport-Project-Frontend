@@ -11,5 +11,12 @@ export const TournamentService = {
 			method: 'GET',
 			params: queryData
 		})
+	},
+
+	async getById(id: number) {
+		return instance<IGetAllTournaments>({
+			url: `${TOURNAMENT}/by-id/${id}`,
+			method: 'GET'
+		})
 	}
 }

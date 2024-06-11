@@ -10,16 +10,37 @@ import { validEmail } from '../auth/valid-email'
 import styles from './EditProfilePage.module.scss'
 import UpdateAvatar from './UpdateAvatar/UpdateAvatar'
 import UpdateUserFiles from './UpdateUserFiles/UpdateUserFiles'
-import { IEditForm1Fields, SelectOptions } from './editProfile.interface'
+import {
+	IEditForm1Fields,
+	SelectOptions,
+	getIndexByValue
+} from './editProfile.interface'
+import { UpdateProfile } from '@/hooks/modelHooks/useUser'
+import { UpdateProfileDto, userStatus } from '@/services/user.service'
 
 const EditProfilePage: FC = () => {
 	const { data, isLoading: isProfileLoading, refetch } = useProfile()
 	const [count, setCount] = useState(0)
-	const [playerType, setPlayerType] = useState<string | undefined>('')
+	const [update, setUpdate] = useState<UpdateProfileDto>({
+		status: 'Player',
+		nickname: '',
+		description: ''
+	})
+
+	let updateValues: UpdateProfileDto = {
+		status: 'Player',
+		nickname: '',
+		description: ''
+	}
+	const [playerType, setPlayerType] = useState<userStatus>('Player')
+	const [defaultOption, setDefaultOption] = useState<number>(3)
+
+	const { mutate: HandleUpdateProfile, err: ErrorUpdatingProfile } =
+		UpdateProfile(update)
 
 	const {
 		register: form1,
-		getValues: getValuesForm1,
+		getValues,
 		setValue,
 		handleSubmit,
 		reset,
@@ -28,9 +49,30 @@ const EditProfilePage: FC = () => {
 		mode: 'onChange'
 	})
 
+	const handleCustomSubmit = () => {
+		const formData = getValues()
+
+		updateValues = {
+			description: formData.description,
+			nickname: formData.nickname,
+			status: playerType,
+			...(formData.oldPassword && { oldPassword: formData.oldPassword }),
+			...(formData.newPassword && { newPassword: formData.newPassword })
+		}
+
+		setUpdate(updateValues)
+
+		HandleUpdateProfile()
+	}
+
 	useEffect(() => {
+		if (data?.status) {
+			const index = getIndexByValue(data.status)
+			setDefaultOption(index)
+		}
 		if (data?.description) {
 			let count = data.description.substring(0, 100).length
+			setPlayerType(data.status)
 			setCount(count)
 			setValue('description', data.description)
 			setValue('nickname', data.nickname)
@@ -62,8 +104,12 @@ const EditProfilePage: FC = () => {
 						<div>
 							<span className=' mb-1 ml-1'>Тип аккаунта</span>
 							<Select
-								onChange={value => setPlayerType(value?.value)}
-								defaultValue={SelectOptions[0]}
+								onChange={value => {
+									if (value) {
+										setPlayerType(value.value as userStatus)
+									}
+								}}
+								defaultValue={SelectOptions[defaultOption]}
 								classNamePrefix='custom-select'
 								options={SelectOptions}
 								className=' w-9/12'
@@ -181,7 +227,9 @@ const EditProfilePage: FC = () => {
 					>
 						Отменить
 					</Button>
-					<Button variant='auth-contained'>Сохранить</Button>
+					<Button variant='auth-contained' onClick={() => handleCustomSubmit()}>
+						Сохранить
+					</Button>
 				</div>
 			</div>
 		</section>

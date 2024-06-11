@@ -29,20 +29,6 @@ const TournamentsCatalog: FC<ITournamentCatalog> = ({ data, isLoading }) => {
 			) : (
 				<p>There are no tournaments at the moment</p>
 			)}
-			{data?.length ? (
-				data.map(tournament => (
-					<TournamentItem item={tournament} key={tournament.id} />
-				))
-			) : (
-				<p>There are no tournaments at the moment</p>
-			)}
-			{data?.length ? (
-				data.map(tournament => (
-					<TournamentItem item={tournament} key={tournament.id} />
-				))
-			) : (
-				<p>There are no tournaments at the moment</p>
-			)}
 		</div>
 	)
 }
